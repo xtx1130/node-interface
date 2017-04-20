@@ -1,21 +1,17 @@
 'use strict';
-var path = require('path');
-var fs = require('fs');
-var isexist = void 0;
+const path = require('path');
+const fs = require('fs');
+let isexist = void 0;
 
-//错误日志输出完整路径
-var errorLogPath = path.resolve(__dirname, "../logs/error");
+let errorLogPath = path.resolve(__dirname, "../logs/error");
 isexist = fs.existsSync('../logs');
 if(!isexist){
     fs.mkdirSync('../logs','0777');
 }
-//响应日志输出完整路径
-var responseLogPath = path.resolve(__dirname, "../logs/reponse");
-console.log(errorLogPath,responseLogPath)
+let responseLogPath = path.resolve(__dirname, "../logs/reponse");
 module.exports = {
     "appenders":
     [
-        //错误日志
         {
             "category":"errorLogger",             //logger名称
             "type": "dateFile",                   //日志类型
@@ -23,7 +19,6 @@ module.exports = {
             "alwaysIncludePattern":true,          //是否总是有后缀名
             "pattern": "-yyyy-MM-dd-hh.log"       //后缀，每小时创建一个新的日志文件
         },
-        //响应日志
         {
             "category":"resLogger",
             "type": "dateFile",
