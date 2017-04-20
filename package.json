@@ -11,8 +11,16 @@
     "interface",
     "proxy"
   ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/xtx1130/node-interface.git"
+  },
   "author": "xtx1130",
-  "license": "ISC",
+  "license": "MIT",
+  "engine-strict": true,
+  "engines": {
+    "node": ">= 6.3"
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "co": "^4.6.0",
