@@ -1,4 +1,4 @@
-# node-interface
+# node-interface [![Build Status](https://travis-ci.org/xtx1130/node-interface.svg?branch=master)](https://travis-ci.org/xtx1130/node-interface)
 
 > middle ware for front-engineer to server
 
