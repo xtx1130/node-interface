@@ -19,7 +19,7 @@
   "license": "MIT",
   "engine-strict": true,
   "engines": {
-    "node": ">= 6.3"
+    "node": ">= 7.6"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
