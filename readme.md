@@ -42,3 +42,7 @@ $.ajax({
 ### 1.0.0 version 
 
 + project established
+
+### 1.1.0 version
+
++ add testing
