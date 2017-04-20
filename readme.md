@@ -50,3 +50,7 @@ $.ajax({
 ### 1.1.0 version
 
 + add testing
+
+###License
+
++ MIT
