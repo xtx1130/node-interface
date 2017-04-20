@@ -27,6 +27,7 @@ const koa = require('koa');
 const env = require('./config/index.js');
 const port = env.port||'8087';
 const Router = require('koa-router');
+const testing = require('testing');
 let router = new Router();
 //middleware
 const midentryLog = require('./app/middleware/entryLog');
@@ -56,3 +57,20 @@ app.use(async (ctx,next) => {
 });
 app.listen(port);
 console.log(`Server up and running! On port ${port}!`)
+
+let testStartServer = callback =>{
+	let options = {
+		port: 10530,
+	};
+	let server = app.listen(options.port)
+	server.close(function(error){
+		testing.check(error, 'Could not stop server', callback);
+		testing.success(callback);
+	});
+}
+exports.test = callback => {
+	testing.run([testStartServer], 5000, callback);
+};
+if (__filename == process.argv[1]){
+	exports.test(testing.show);
+}
