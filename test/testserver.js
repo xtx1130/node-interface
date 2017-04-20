@@ -1,4 +1,6 @@
 const testing = require('testing');
+const koa = require('koa');
+let app = new koa();
 let testStartServer = callback =>{
 	let options = {
 		port: 10530,
