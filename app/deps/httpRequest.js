@@ -1,6 +1,6 @@
 'use strict';
 const http = require('http');
-const promiseHttp = require('./PromiseHttp');
+const promiseHttp = require('./promiseHttp');
 const url = require('url');
 //promise.promisifyAll(http);
 let func = (obj, ctx) => {
