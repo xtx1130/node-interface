@@ -3,7 +3,7 @@ const testing = require('testing');
 
 module.exports.test = callback => {
 	let tests = {};
-	let libs = 'index';
+	let lib = 'index';
 	tests[lib] = require(lib + '.js').test;
 	testing.run(tests, 4200, callback);
 }
