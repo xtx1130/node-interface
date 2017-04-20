@@ -1,0 +1,27 @@
+{
+  "name": "node-interface",
+  "version": "1.0.0",
+  "description": "node interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "interface",
+    "proxy"
+  ],
+  "author": "xtx1130",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "co": "^4.6.0",
+    "koa": "^2.2.0",
+    "koa-body": "^2.0.0",
+    "koa-router": "^7.1.1",
+    "log4js": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
