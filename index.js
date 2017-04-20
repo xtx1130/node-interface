@@ -21,6 +21,7 @@
 			console.log(JSON.parse(data))
 		}
 	})
+ *@tips:后台必须restful接口规则，规则相应修改见app/deps/httpRequest line 34
 **/
 'use strict';
 const koa = require('koa'); 
@@ -47,7 +48,8 @@ app.use(async (ctx,next) => {
 		ctx.set('access-control-allow-origin',ctx.request.header['access-control-allow-origin']);
 		ctx.set('access-control-allow-headers',ctx.request.header['access-control-allow-headers']);
 		ctx.set('access-control-allow-methods',ctx.request.header['access-control-allow-methods']);
-		ctx.set('content-type',ctx.request.header['content-type']);
+		ctx.set('Content-Type',ctx.request.header['content-type']);
+		//ctx.set('Content-Length',Buffer.byteLength(ctx.body, 'utf8'));
 		ctx.set('Via','nginx');
 		await next();
 	}catch(e){

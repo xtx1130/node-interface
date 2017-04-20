@@ -1,6 +1,9 @@
 'use strict';
 let midres = async (ctx, next) => {
 	try {
+		if (ctx.request.method == "OPTIONS") {
+	    	ctx.response.status = 200
+	  	}
 		await next()
 	} catch (e) {
 		let status = e.status || 500;

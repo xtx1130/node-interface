@@ -43,6 +43,8 @@ $.ajax({
 ```
 + The success data has contained data[0]&data[1] result;
 
++ server client must has restful API status to ensure node can check，API status changes in ./app/deps/httpRequest line 34
+
 ### 1.0.0 version 
 
 + project established
@@ -50,6 +52,10 @@ $.ajax({
 ### 1.1.0 version
 
 + add testing
+
+### 1.3.0 version
+
++ add post method
 
 ###License
 

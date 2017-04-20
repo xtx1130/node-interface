@@ -9,7 +9,7 @@ let PromiseRequest = Promise.method(options => {
                 'httpVersion': response.httpVersion,
                 'httpStatusCode': response.statusCode,
                 'headers': response.headers,
-                'body': '',
+                'body': options.data||'',
                 'trailers': response.trailers,
             };
             response.on('data', chunk => {
