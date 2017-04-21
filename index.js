@@ -44,7 +44,7 @@ app.use(router.routes(), router.allowedMethods());
 app.use(combine);
 app.use(async (ctx,next) => {
 	try{
-		ctx.body = JSON.stringify(ctx.body);
+		ctx.body = JSON.stringify(ctx.body)||'{"status":"false"}';
 		ctx.set('access-control-allow-origin',ctx.request.header['access-control-allow-origin']);
 		ctx.set('access-control-allow-headers',ctx.request.header['access-control-allow-headers']);
 		ctx.set('access-control-allow-methods',ctx.request.header['access-control-allow-methods']);
