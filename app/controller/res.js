@@ -10,6 +10,7 @@ let midres = async (ctx, next) => {
 		let message = e.message || '服务器错误';
 		ctx.body = message;
 		ctx.status = status;
+		ctx.set('Content-Type','text/html;charset=UTF-8');
 		throw e;
 
 	}

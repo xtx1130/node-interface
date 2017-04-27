@@ -33,11 +33,13 @@ const resErr = require('./app/controller/res.js');
 const combine = require('./app/middleware/interCombine');
 const apis = require('./app/routes/apis');
 const otherRouter = require('./app/routes/useless');
+const rootRouter = require('./app/routes/rootRouter');
 const app = new koa();
 //错误日志
 app.use(midentryLog);
 //res 500 404等
 app.use(resErr);
+app.use(rootRouter.routes(), rootRouter.allowedMethods());
 app.use(otherRouter.routes(), otherRouter.allowedMethods());
 app.use(apis.routes(), apis.allowedMethods());
 app.use(combine);
