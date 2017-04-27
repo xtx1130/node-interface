@@ -19,7 +19,7 @@ let func = (obj, ctx) => {
 			options={
 				method: method,
 				host: host,
-				path: pathget
+				path: path
 			}
 		}else{
 			options={

@@ -32,8 +32,8 @@ $.ajax({
 		},
 		1:{
 			url:'http://url',
-			type:'get',
-			data:'qipuId=1'
+			type:'post',
+			data:{qipuId:1}
 		}
 	},
 	success:function(data){

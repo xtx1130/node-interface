@@ -4,7 +4,6 @@ const Router = require('koa-router');
 const getRoute = require('../deps/getRoute');
 let router = new Router();
 router.get('/', async (ctx, next) => {
-	console.log(getRoute(ctx.req.url))
 	if(getRoute(ctx.req.url)==='/apis'){
 		await next();
 	}else{
