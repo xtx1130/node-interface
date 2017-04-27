@@ -25,8 +25,7 @@
 **/
 'use strict';
 const koa = require('koa'); 
-const env = require('./config/index.js');
-const port = env.port||'8087';
+//const env = require('./config/index.js');
 //middleware
 const midentryLog = require('./app/middleware/entryLog');
 const resErr = require('./app/controller/res.js');
@@ -35,6 +34,9 @@ const apis = require('./app/routes/apis');
 const otherRouter = require('./app/routes/useless');
 const rootRouter = require('./app/routes/rootRouter');
 const app = new koa();
+let args = process.argv.slice(2);
+console.log('koa:',args)
+let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8087;
 //错误日志
 app.use(midentryLog);
 //res 500 404等
