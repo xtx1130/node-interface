@@ -1,11 +1,10 @@
 'use strict';
-const url = require('url');
+const getRoute = require('../deps/getRoute');
 const httpr = require('../deps/httpRequest');
 let combine = async (ctx,next) => {
 	ctx.body=[];
 	try{
-		let uri = url.parse(ctx.req.url);
-		if(uri.pathname.match('apis')){
+		if(getRoute(ctx.req.url)==='/apis'){
 			let obj = ctx.request.body;
 			for(let i in obj){
 				var s = await httpr(obj[i],ctx);

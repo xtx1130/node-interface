@@ -6,7 +6,7 @@ let midres = async (ctx, next) => {
 	  	}
 		await next()
 	} catch (e) {
-		let status = e.status || 500;
+		let status = ctx.status || 500;
 		let message = e.message || '服务器错误';
 		ctx.body = message;
 		ctx.status = status;

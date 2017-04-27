@@ -27,20 +27,19 @@
 const koa = require('koa'); 
 const env = require('./config/index.js');
 const port = env.port||'8087';
-const Router = require('koa-router');
-let router = new Router();
 //middleware
 const midentryLog = require('./app/middleware/entryLog');
 const resErr = require('./app/controller/res.js');
 const combine = require('./app/middleware/interCombine');
 const apis = require('./app/routes/apis');
+const otherRouter = require('./app/routes/useless');
 const app = new koa();
 //错误日志
 app.use(midentryLog);
 //res 500 404等
 app.use(resErr);
-router.use(apis.routes(), apis.allowedMethods());
-app.use(router.routes(), router.allowedMethods());
+app.use(otherRouter.routes(), otherRouter.allowedMethods());
+app.use(apis.routes(), apis.allowedMethods());
 app.use(combine);
 app.use(async (ctx,next) => {
 	try{
