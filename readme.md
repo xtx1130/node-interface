@@ -41,6 +41,8 @@ $.ajax({
 	}
 })
 ```
++ node-interface will help you to request data[0].url && data[1].url and merge the response return back to users
+ 
 + The success data has contained data[0]&data[1] result;
 
 + server client must has restful API status to ensure node can check，API status changes in ./app/deps/httpRequest line 34
@@ -57,6 +59,10 @@ $.ajax({
 
 + add post method
 
+### 1.5.0 version
+
++ add other routers for 404,only /apis can be readed
+ 
 ###License
 
 + MIT
