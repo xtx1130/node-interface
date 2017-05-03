@@ -4,7 +4,7 @@ const httpr = require('../deps/httpRequest');
 let combine = async (ctx,next) => {
 	ctx.body=[];
 	try{
-		if(getRoute(ctx.req.url)==='/apis'){
+		if(ctx.path==='/apis'){
 			let obj = ctx.request.body;
 			for(let i in obj){
 				var s = await httpr(obj[i],ctx);
