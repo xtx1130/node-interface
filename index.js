@@ -33,9 +33,12 @@ const combine = require('./app/middleware/interCombine');
 const apis = require('./app/routes/apis');
 const otherRouter = require('./app/routes/useless');
 const rootRouter = require('./app/routes/rootRouter');
+const helmet = require('koa-helmet');
 const app = new koa();
 let args = process.argv.slice(2);
-let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8087;
+let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8031;
+
+//app.use(helmet());
 //错误日志
 app.use(midentryLog);
 //res 500 404等
