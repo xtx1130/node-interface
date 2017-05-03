@@ -11,33 +11,35 @@
 ### usage:
 
 ```bash
-npm install node-interface
+npm install node-interface  
+cd ./node-interface  
+sudo npm install
 ```
 
 ```bash
-node index.js
+sh ./bin/start.sh n (n means how many ports will be listened(8030+n))
 ```
 
 ### examples:
 
 ```js
 $.ajax({
-	url:'http://127.0.0.1:8086',
+	url:'http://127.0.0.1:8031',
 	type:'post',
 	data:{
 		0:{
 			url:'http://url',
 			type:'get',
-			data:'qipuId=1'
+			data:'uId=1'//use key=value&key=value, beacuse this is get method
 		},
 		1:{
 			url:'http://url',
 			type:'post',
-			data:{qipuId:1}
+			data:{uId:1}//use object , because this is post method
 		}
 	},
 	success:function(data){
-		console.log(JSON.parse(data))
+		console.log(JSON.parse(data))//the data is an Array ,and it include [data[0],data[1]]
 	}
 })
 ```
@@ -63,7 +65,17 @@ $.ajax({
 
 + add other routers for 404,only /apis can be readed
 + add start.sh to establish pm2 cluster usage: sh start.sh + n (n means how many ports will get start)
+
+### 1.7.3 version
+
++ change readme
++ add koa-helmet(has been noted in index.js)
+
+### issues
+
++ add issues in [here](https://github.com/xtx1130/node-interface/issues "issue") 
  
 ###License
 
 + MIT
+[0]:
