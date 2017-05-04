@@ -33,6 +33,7 @@ const combine = require('./app/middleware/interCombine');
 const apis = require('./app/routes/apis');
 const otherRouter = require('./app/routes/useless');
 const rootRouter = require('./app/routes/rootRouter');
+//const v8Router = require('./app/routes/v8test');
 const helmet = require('koa-helmet');
 const app = new koa();
 let args = process.argv.slice(2);
@@ -43,6 +44,7 @@ let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8031;
 app.use(midentryLog);
 //res 500 404等
 app.use(resErr);
+//app.use(v8Router.routes(), v8Router.allowedMethods());
 app.use(rootRouter.routes(), rootRouter.allowedMethods());
 app.use(otherRouter.routes(), otherRouter.allowedMethods());
 app.use(apis.routes(), apis.allowedMethods());
