@@ -3,19 +3,20 @@ const http = require('http');
 const Promise = require('bluebird');
 
 let PromiseRequest = Promise.method(options => {
-    return new Promise((resolve, reject) => { 
-        var request = http.request(options, response => {
-            var result = {
-                'httpVersion': response.httpVersion,
-                'httpStatusCode': response.statusCode,
-                'headers': response.headers,
-                'body': options.data||'',
-                'trailers': response.trailers,
-            };
+    return new Promise((resolve, reject) => {
+        let request = http.request(options, response => {
+            let chunks = [];
             response.on('data', chunk => {
-                result.body += chunk;
+                chunks.push(chunk);
             });
             response.on('end', () => {
+                let result = {
+                    'httpVersion': response.httpVersion,
+                    'httpStatusCode': response.statusCode,
+                    'headers': response.headers,
+                    'body': Buffer.concat(chunks) || '',
+                    'trailers': response.trailers,
+                };
                 resolve(result);
             });
         });
@@ -23,6 +24,11 @@ let PromiseRequest = Promise.method(options => {
             console.log('Problem with request:', error.message);
             reject(error);
         });
+        if (options.timeout) {
+            request.setTimeout(options.timeout, () => {
+                request.abort();
+            })
+        }
         request.end();
     });
 });

@@ -26,15 +26,16 @@ let func = (obj, ctx) => {
 				method: method,
 				host: host,
 				path: path,
-				data: JSON.stringify(para)
+				data: JSON.stringify(para),
+				timeout:500
 			}
 		}
 		let asy = async () => {
 			var s = await promiseHttp(options);
 			if(s.httpStatusCode==200)
-				return JSON.parse(s.body);
+				return JSON.parse(s.body.toString());
 			else 
-				return s.body
+				return s.body.toString();
 		};
 		asy().then(req => {
 			ctx.body.push(req);
