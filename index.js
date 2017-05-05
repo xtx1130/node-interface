@@ -42,7 +42,7 @@ let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8031;
 //app.use(helmet());
 //错误日志
 app.use(midentryLog);
-//res 500 404等
+//res 500 404 option等
 app.use(resErr);
 //app.use(v8Router.routes(), v8Router.allowedMethods());
 app.use(rootRouter.routes(), rootRouter.allowedMethods());

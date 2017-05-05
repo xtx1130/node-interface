@@ -3,8 +3,9 @@ let midres = async (ctx, next) => {
 	try {
 		if (ctx.request.method == "OPTIONS") {
 	    	ctx.response.status = 200
+	  	}else{
+	  		await next();
 	  	}
-		await next()
 	} catch (e) {
 		let status = ctx.status || 500;
 		let message = e.message || '服务器错误';
