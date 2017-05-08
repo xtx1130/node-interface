@@ -71,6 +71,10 @@ $.ajax({
 + change readme
 + add koa-helmet(has been noted in index.js)
 
+### 1.9.0 version
+
++ change router,make apis first
+
 ### issues
 
 + add issues in [here](https://github.com/xtx1130/node-interface/issues "issue") 
