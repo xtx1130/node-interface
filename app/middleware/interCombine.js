@@ -10,7 +10,6 @@ let combine = async (ctx,next) => {
 				var s = await httpr(obj[i],ctx);
 			}
 			ctx.status = 200
-			await next();
 		}else{
 			await next();
 		}

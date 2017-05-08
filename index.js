@@ -28,7 +28,7 @@ const koa = require('koa');
 //const env = require('./config/index.js');
 //middleware
 const midentryLog = require('./app/middleware/entryLog');
-const resErr = require('./app/controller/res.js');
+const res = require('./app/controller/res.js');
 const combine = require('./app/middleware/interCombine');
 const apis = require('./app/routes/apis');
 const otherRouter = require('./app/routes/useless');
@@ -42,26 +42,12 @@ let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8031;
 //app.use(helmet());
 //错误日志
 app.use(midentryLog);
-//res 500 404 option等
-app.use(resErr);
+//res 500 404 200 option 以及跨域头
+app.use(res);
 //app.use(v8Router.routes(), v8Router.allowedMethods());
-app.use(rootRouter.routes(), rootRouter.allowedMethods());
-app.use(otherRouter.routes(), otherRouter.allowedMethods());
 app.use(apis.routes(), apis.allowedMethods());
 app.use(combine);
-app.use(async (ctx,next) => {
-	try{
-		ctx.body = JSON.stringify(ctx.body)||'{"status":"false"}';
-		ctx.set('access-control-allow-origin',ctx.request.header['access-control-allow-origin']);
-		ctx.set('access-control-allow-headers',ctx.request.header['access-control-allow-headers']);
-		ctx.set('access-control-allow-methods',ctx.request.header['access-control-allow-methods']);
-		ctx.set('Content-Type',ctx.request.header['content-type']||'text/html; charset=UTF-8');
-		//ctx.set('Content-Length',Buffer.byteLength(ctx.body, 'utf8'));
-		ctx.set('Via','nginx');
-		await next();
-	}catch(e){
-		throw e;
-	}
-});
+app.use(rootRouter.routes(), rootRouter.allowedMethods());
+app.use(otherRouter.routes(), otherRouter.allowedMethods());
 app.listen(port);
 console.log(`Server up and running! On port ${port}!`);
