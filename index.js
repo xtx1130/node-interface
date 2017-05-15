@@ -39,16 +39,17 @@ const helmet = require('koa-helmet');
 const app = new koa();
 let args = process.argv.slice(2);
 let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8031;
-
 //app.use(helmet());
 //错误日志
 app.use(midentryLog);
 //res 500 404 200 option 以及跨域头
 app.use(res);
 //app.use(v8Router.routes(), v8Router.allowedMethods());
-app.use(apis.routes(), apis.allowedMethods());
+app.use(apis.routes());
+app.use(apis.allowedMethods())
 app.use(combine);
 app.use(rootRouter.routes(), rootRouter.allowedMethods());
 app.use(otherRouter.routes(), otherRouter.allowedMethods());
+console.dir(app)
 app.listen(port);
 console.log(`Server up and running! On port ${port}!`);
