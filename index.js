@@ -50,6 +50,5 @@ app.use(apis.allowedMethods())
 app.use(combine);
 app.use(rootRouter.routes(), rootRouter.allowedMethods());
 app.use(otherRouter.routes(), otherRouter.allowedMethods());
-console.dir(app)
 app.listen(port);
 console.log(`Server up and running! On port ${port}!`);
