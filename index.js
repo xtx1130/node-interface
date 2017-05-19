@@ -39,6 +39,7 @@ const helmet = require('koa-helmet');
 const app = new koa();
 let args = process.argv.slice(2);
 let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8031;
+console.log('test')
 //app.use(helmet());
 //错误日志
 app.use(midentryLog);
