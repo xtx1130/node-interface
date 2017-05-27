@@ -73,6 +73,10 @@ let testStartServer = callback =>{
 		testing.success(callback);
 	});
 }
+if (__filename == process.argv[1])
+{
+	exports.test(testing.show);
+}
 module.exports.test = callback => {
 	testing.run([testStartServer], 5000, callback);
 };
