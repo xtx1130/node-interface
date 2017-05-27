@@ -2,7 +2,6 @@ language: node_js
 repo_token: wJCXdiGNXXskmuaZDqk52cmpX6TCliL8q
 node_js:
   - "7.8.0"
-before_install: npm list
 install: npm install
 script: npm test
 after_script: npm run cov
