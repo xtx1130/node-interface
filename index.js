@@ -72,11 +72,7 @@ let testStartServer = callback =>{
 		testing.check(error, 'Could not stop server', callback);
 		testing.success(callback);
 	});
+	mainApp.close();
 }
-module.exports.test = callback => {
-	testing.run([testStartServer], 5000, callback);
-};
-if (__filename == process.argv[1]){
-	exports.test(testing.show);
-}
+module.exports.test = testStartServer;
 console.log(`Server up and running! On port ${port}!`);

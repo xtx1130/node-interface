@@ -11,9 +11,4 @@ let testKoaServer = callback =>{
 		testing.success(callback);
 	});
 }
-exports.test = callback => {
-	testing.run([testKoaServer], 5000, callback);
-};
-if (__filename == process.argv[1]){
-	exports.test(testing.show);
-}
+exports.test = testKoaServer;
