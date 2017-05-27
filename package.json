@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node test.js",
-    "cov": "node ./node_modules/coveralls/bin/coveralls.js"
+    "cov": "./node_modules/.bin/babel-node ./node_modules/.bin/istanbul cover test.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "keywords": [
     "node",
@@ -33,7 +33,9 @@
     "testing": "^1.1.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "coveralls": "^2.13.1",
+    "istanbul": "^0.4.5",
     "nodemon": "^1.11.0",
     "pm2": "^2.4.6"
   }
