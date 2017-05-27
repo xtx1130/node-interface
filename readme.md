@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/xtx1130/node-interface.svg?branch=master)](https://www.npmjs.com/package/node-interface)
 [![npm (tag)](https://img.shields.io/npm/v/npm/next.svg)](https://www.npmjs.com/package/node-interface)
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
+[![Coverage Status](https://coveralls.io/repos/github/xtx1130/node-interface/badge.svg?branch=master)](https://coveralls.io/github/xtx1130/node-interface?branch=master)
 > middle ware for front-engineer to server
 
 ## simple server for api merge
