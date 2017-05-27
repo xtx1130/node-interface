@@ -36,20 +36,44 @@ const otherRouter = require('./app/routes/useless');
 const rootRouter = require('./app/routes/rootRouter');
 //const v8Router = require('./app/routes/v8test');
 const helmet = require('koa-helmet');
+const testing = require('testing');
 const app = new koa();
 let args = process.argv.slice(2);
 let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8031;
-console.log('test')
 //app.use(helmet());
 //错误日志
-app.use(midentryLog);
-//res 500 404 200 option 以及跨域头
-app.use(res);
-//app.use(v8Router.routes(), v8Router.allowedMethods());
-app.use(apis.routes());
-app.use(apis.allowedMethods())
-app.use(combine);
-app.use(rootRouter.routes(), rootRouter.allowedMethods());
-app.use(otherRouter.routes(), otherRouter.allowedMethods());
+let middleWare = [midentryLog,res,apis.routes(),combine,rootRouter.routes(),otherRouter.routes()];
+let regester = (arg) => {
+	arg.forEach(fn=>app.use(fn))
+}
+regester(middleWare)
+// app.use(midentryLog);
+// //res 500 404 200 option 以及跨域头
+// app.use(res);
+// //app.use(v8Router.routes(), v8Router.allowedMethods());
+// app.use(apis.routes());
+// app.use(apis.allowedMethods())
+// app.use(combine);
+// app.use(rootRouter.routes());
+// app.use(rootRouter.allowedMethods());
+// app.use(otherRouter.routes());
+// app.use(otherRouter.allowedMethods())
 app.listen(port);
+
+
+//testing
+let testStartServer = callback =>{
+	let options = {
+		port: 10531,
+	};
+	regester(middleWare)
+	let server = app.listen(options.port)
+	server.close(function(error){
+		testing.check(error, 'Could not stop server', callback);
+		testing.success(callback);
+	});
+}
+module.exports.test = callback => {
+	testing.run([testStartServer], 5000, callback);
+};
 console.log(`Server up and running! On port ${port}!`);

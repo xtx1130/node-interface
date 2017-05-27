@@ -1,7 +1,7 @@
 const testing = require('testing');
 const koa = require('koa');
 let app = new koa();
-let testStartServer = callback =>{
+let testKoaServer = callback =>{
 	let options = {
 		port: 10530,
 	};
@@ -12,7 +12,7 @@ let testStartServer = callback =>{
 	});
 }
 exports.test = callback => {
-	testing.run([testStartServer], 5000, callback);
+	testing.run([testKoaServer], 5000, callback);
 };
 if (__filename == process.argv[1]){
 	exports.test(testing.show);
