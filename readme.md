@@ -76,6 +76,10 @@ $.ajax({
 
 + change router,make apis first
 
+### 2.0.0 version
+
++ add LICENSE and add coverage 
+
 ### issues
 
 + add issues in [here](https://github.com/xtx1130/node-interface/issues "issue") 
