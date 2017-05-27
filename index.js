@@ -58,17 +58,17 @@ regester(middleWare)
 // app.use(rootRouter.allowedMethods());
 // app.use(otherRouter.routes());
 // app.use(otherRouter.allowedMethods())
-app.listen(port);
+let mainApp = app.listen(port);
 
 
 //testing
 let testStartServer = callback =>{
-	let options = {
-		port: 10531,
-	};
-	regester(middleWare)
-	let server = app.listen(options.port)
-	server.close(function(error){
+	// let options = {
+	// 	port: 10531,
+	// };
+	// regester(middleWare)
+	// let server = app.listen(options.port)
+	mainApp.close(function(error){
 		testing.check(error, 'Could not stop server', callback);
 		testing.success(callback);
 	});
