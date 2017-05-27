@@ -1,4 +1,5 @@
 language: node_js
+repo_token: wJCXdiGNXXskmuaZDqk52cmpX6TCliL8q
 node_js:
   - "7.8.0"
 install: npm install
