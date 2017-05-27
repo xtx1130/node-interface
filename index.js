@@ -63,12 +63,12 @@ let mainApp = app.listen(port);
 
 //testing
 let testStartServer = callback =>{
-	// let options = {
-	// 	port: 10531,
-	// };
-	// regester(middleWare)
-	// let server = app.listen(options.port)
-	mainApp.close(function(error){
+	let options = {
+		port: 10531,
+	};
+	regester(middleWare)
+	let server = app.listen(options.port)
+	server.close(function(error){
 		testing.check(error, 'Could not stop server', callback);
 		testing.success(callback);
 	});
@@ -76,4 +76,7 @@ let testStartServer = callback =>{
 module.exports.test = callback => {
 	testing.run([testStartServer], 5000, callback);
 };
+if (__filename == process.argv[1]){
+	exports.test(testing.show);
+}
 console.log(`Server up and running! On port ${port}!`);
