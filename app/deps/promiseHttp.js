@@ -14,8 +14,8 @@ let PromiseRequest = Promise.method(options => {
                     'httpVersion': response.httpVersion,
                     'httpStatusCode': response.statusCode,
                     'headers': response.headers,
-                    'body': Buffer.concat(chunks) || '',
-                    'trailers': response.trailers,
+                    'body': Buffer.concat(chunks) || ''//,
+                    //'trailers': response.trailers,
                 };
                 resolve(result);
             });
