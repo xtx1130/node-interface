@@ -69,7 +69,8 @@ let testStartServer = async callback =>{
 	};
 	regester(middleWare)
 	let server = app.listen(options.port);
-	let req = await pHttp({port:'10531',path:'/apis',method:'get'});
+	let reqSuccess = await pHttp({port:'10531',path:'/apis',method:'get',timeout:500});
+	let reqReject = await pHttp({port:'10531',path:'/',method:'get',timeout:500});
 	server.close(function(error){
 		testing.check(error, 'Could not stop server', callback);
 		testing.success(callback);
