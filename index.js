@@ -74,8 +74,9 @@ let testStartServer = async callback =>{
 	let reqPostSuccess = await pHttp({port:'10531',path:'/apis',method:'post',timeout:500});
 	let reqPostReject = await pHttp({port:'10531',path:'/',method:'post',timeout:500});
 	try{
-		let reqErr = await pHttp({port:'10530',path:'/',method:'post',timeout:500});}catch(e){
-		console.log(e)
+		let reqErr = await pHttp({port:'10530',path:'/',method:'post',timeout:500});
+	}catch(e){
+		testing.verify(e, 'this must throw error', callback);
 	}
 	testing.verify(reqGetSuccess.httpStatusCode==200,reqGetSuccess.httpStatusCode+'not 200',callback);
 	testing.verify(reqGetReject.httpStatusCode==404,reqGetReject.httpStatusCode+'not 404',callback);
