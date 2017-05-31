@@ -22,7 +22,7 @@ let PromiseRequest = Promise.method(options => {
         });
         request.on('error', error => {
             console.log('Problem with request:', error.message);
-            reject(error);
+            reject(new Error(error));
         });
         if (options.timeout) {
             request.setTimeout(options.timeout, () => {
