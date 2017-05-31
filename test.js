@@ -9,6 +9,6 @@ module.exports.test = callback => {
 	tests[lib] = require('./test/'+lib + '.js').test;
 	tests[dem] = require('./index').test;
 	//tests[promise] = require('./app/deps/httpRequest').test;
-	testing.run(tests, 4200, callback);
+	testing.run(tests, 1000, callback);
 }
 exports.test(testing.show);
