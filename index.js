@@ -37,6 +37,7 @@ const rootRouter = require('./app/routes/rootRouter');
 //const v8Router = require('./app/routes/v8test');
 const helmet = require('koa-helmet');
 const testing = require('testing');
+const pHttp = require('./app/deps/promiseHttp');
 const app = new koa();
 let args = process.argv.slice(2);
 let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8031;
@@ -62,12 +63,13 @@ let mainApp = app.listen(port);
 
 
 //testing
-let testStartServer = callback =>{
+let testStartServer = async callback =>{
 	let options = {
 		port: 10531,
 	};
 	regester(middleWare)
-	let server = app.listen(options.port)
+	let server = app.listen(options.port);
+	let req = await pHttp({port:'10531',path:'/apis',method:'get'});
 	server.close(function(error){
 		testing.check(error, 'Could not stop server', callback);
 		testing.success(callback);
