@@ -73,7 +73,14 @@ let testStartServer = async callback =>{
 	let reqGetReject = await pHttp({port:'10531',path:'/',method:'get',timeout:500});
 	let reqPostSuccess = await pHttp({port:'10531',path:'/apis',method:'post',timeout:500});
 	let reqPostReject = await pHttp({port:'10531',path:'/',method:'post',timeout:500});
-	testing.verify(reqGetSuccess&&reqGetReject&&reqPostSuccess&&reqPostReject,'it is not ok',callback)
+	try{
+		let reqErr = await pHttp({port:'10530',path:'/',method:'post',timeout:500});}catch(e){
+		console.log(e)
+	}
+	testing.verify(reqGetSuccess.httpStatusCode==200,reqGetSuccess.httpStatusCode+'not 200',callback);
+	testing.verify(reqGetReject.httpStatusCode==404,reqGetReject.httpStatusCode+'not 404',callback);
+	testing.verify(reqPostSuccess.httpStatusCode==200,reqPostSuccess.httpStatusCode+'not 200',callback);
+	testing.verify(reqPostReject.httpStatusCode==404,reqPostReject.httpStatusCode+'not 404',callback);
 	server.close(function(error){
 		testing.check(error, 'Could not stop server', callback);
 		testing.success(callback);
