@@ -11,7 +11,4 @@ module.exports.test = callback => {
 	//tests[promise] = require('./app/deps/httpRequest').test;
 	testing.run(tests, 4200, callback);
 }
-if (__filename == process.argv[1])
-{
-	exports.test(testing.show);
-}
+exports.test(testing.show);
