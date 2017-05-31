@@ -3,3 +3,4 @@
 /pm2log
 node.cpu.json
 /coverage
+.coveralls.yml
