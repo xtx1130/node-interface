@@ -27,6 +27,7 @@ let testSleep = (req, res) => {
 let router = new Router();
 router.get('/test', koabody, async (ctx, next) => {
 	testTryCatch(ctx.req, ctx.res);
+    testSleep(ctx.req, ctx.res);
 })
 
 module.exports = router;
