@@ -1,4 +1,4 @@
-/**
+/**1
  *@file index.js
  *@description 合并ajax请求 请求格式eg:
  *@author xtx1130
