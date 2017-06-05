@@ -38,7 +38,7 @@
     "coveralls": "^2.13.1",
     "istanbul": "^0.4.5",
     "nodemon": "^1.11.0",
-    "pm2": "^2.4.6",
-    "v8-profiler": "latest"
+    "pm2": "^2.4.6"//,
+    //"v8-profiler": "latest"
   }
 }

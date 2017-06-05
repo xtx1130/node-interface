@@ -34,7 +34,7 @@ const combine = require('./app/middleware/interCombine');
 const apis = require('./app/routes/apis');
 const otherRouter = require('./app/routes/useless');
 const rootRouter = require('./app/routes/rootRouter');
-const v8Router = require('./app/routes/v8test');
+//const v8Router = require('./app/routes/v8test');
 const helmet = require('koa-helmet');
 const testing = require('testing');
 const pHttp = require('./app/deps/promiseHttp');
@@ -43,7 +43,7 @@ let args = process.argv.slice(2);
 let port = (args[0] && /^\d+$/.test(args[0])) ? parseInt(args[0]) : 8031;
 //app.use(helmet());
 //错误日志
-let middleWare = [midentryLog,res,apis.routes(),combine,rootRouter.routes(),otherRouter.routes(),v8Router.routes()];
+let middleWare = [midentryLog,res,apis.routes(),combine,rootRouter.routes(),otherRouter.routes()];
 let regester = (arg) => {
 	arg.forEach(fn=>app.use(fn))
 }
