@@ -26,7 +26,6 @@
 **/
 'use strict';
 const koa = require('koa'); 
-//const env = require('./config/index.js');
 //middleware
 const midentryLog = require('./app/middleware/entryLog');
 const res = require('./app/controller/res.js');
