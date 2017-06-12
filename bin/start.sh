@@ -1,5 +1,7 @@
 #!/bin/zsh
 #ulimit -c unlimited
+IFS=" 	
+";
 baseurl="/Users/xtx/Desktop/qiyi/node-interface/";
 cd $baseurl;
 num=$1;
